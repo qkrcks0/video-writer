@@ -42,7 +42,7 @@ def start():
         if cv2.waitKey(delay) == 27: # esc를 누르면 강제 종료
             break
 
-        if time.time() - start_time >= 5:
+        if time.time() - start_time >= 600:
 
             if cnt % 2 == 0:
                 out.release()
@@ -62,9 +62,10 @@ def start():
 
 root = Tk() # 객체 생성
 root.title("PubQue")
-root.geometry("300x100")
+root.geometry("206x206")
 
-btn1 = Button(root, width=40, height=6, text="시작", command=start)
+photo = PhotoImage(file="S0011_FaceTimeRecord.png")
+btn1 = Button(root, image=photo, command=start)
 btn1.pack()
 
 root.mainloop()
