@@ -62,8 +62,9 @@ def start():
 
 root = Tk() # 객체 생성
 root.title("PubQue")
+root.geometry("300x100")
 
-btn1 = Button(root, width=10, height=3, text="시작", command=start)
+btn1 = Button(root, width=40, height=6, text="시작", command=start)
 btn1.pack()
 
 root.mainloop()
