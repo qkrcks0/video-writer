@@ -62,10 +62,9 @@ def start():
 
 root = Tk() # 객체 생성
 root.title("PubQue")
-root.geometry("206x206")
+root.geometry("206x150")
 
-photo = PhotoImage(file="S0011_FaceTimeRecord.png")
-btn1 = Button(root, image=photo, command=start)
+btn1 = Button(root, width=40, height=10, text="시작", command=start)
 btn1.pack()
 
 root.mainloop()
