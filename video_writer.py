@@ -20,14 +20,14 @@ def start():
     h = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = cap.get(cv2.CAP_PROP_FPS)
 
-    nseconds = 12
+    nseconds = 9
     d = queue.Queue(fps * nseconds)
 
     fourcc = cv2.VideoWriter_fourcc(*'DIVX')
 
     delay = round(1000/fps)
 
-    out = cv2.VideoWriter('output.avi', fourcc, 20, (w, h))
+    out = cv2.VideoWriter('output.avi', fourcc, 20., (w, h))
 
     if not out.isOpened():
         print('File open failed!')
@@ -59,12 +59,12 @@ def start():
 
             if cnt % 2 == 0:
                 out.release()
-                out = cv2.VideoWriter('output2.avi', fourcc, 20, (w, h))
+                out = cv2.VideoWriter('output2.avi', fourcc, 20., (w, h))
                 cnt += 1
 
             elif cnt % 2 == 1:
                 out.release()
-                out = cv2.VideoWriter('output.avi', fourcc, 20, (w, h))
+                out = cv2.VideoWriter('output.avi', fourcc, 20., (w, h))
                 cnt += 1
 
             start_time = time.time()
