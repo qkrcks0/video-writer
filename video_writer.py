@@ -7,6 +7,8 @@ from tkinter import *
 
 def start():
     cap = cv2.VideoCapture(0)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
     if not cap.isOpened():
         print("Camera open failed!")
@@ -50,14 +52,11 @@ def start():
             stream = d.get()
             cv2.namedWindow("stream",cv2.WINDOW_NORMAL)
             cv2.imshow("stream", stream)
-            
-        # cv2.namedWindow("frame", cv2.WINDOW_NORMAL)
-        # cv2.imshow('frame', frame)
 
         if cv2.waitKey(delay) == 27: # esc를 누르면 강제 종료
             break
 
-        if time.time() - video_start_time >= 20:
+        if time.time() - video_start_time >= 600:
 
             if cnt % 2 == 0:
                 out.release()
