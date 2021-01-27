@@ -14,8 +14,7 @@ def start():
         print("Camera open failed!")
         sys.exit()
 
-    camera_start_time = time.time()
-    video_start_time = time.time()
+    start_time = time.time()
 
     w = round(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     h = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -56,7 +55,7 @@ def start():
         if cv2.waitKey(delay) == 27: # esc를 누르면 강제 종료
             break
 
-        if time.time() - video_start_time >= 600:
+        if time.time() - start_time >= 600:
 
             if cnt % 2 == 0:
                 out.release()
@@ -68,7 +67,7 @@ def start():
                 out = cv2.VideoWriter('output.avi', fourcc, fps, (w, h))
                 cnt += 1
 
-            video_start_time = time.time()
+            start_time = time.time()
 
     cap.release()
     out.release()
