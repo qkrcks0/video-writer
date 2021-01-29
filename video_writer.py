@@ -20,7 +20,7 @@ def start():
     h = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = cap.get(cv2.CAP_PROP_FPS)
 
-    nseconds = 9
+    nseconds = 4
     d = queue.Queue(fps * nseconds)
 
     fourcc = cv2.VideoWriter_fourcc(*'DIVX')
@@ -41,6 +41,12 @@ def start():
 
         if not ret:   
             break
+        
+        now = time.localtime()
+        current_time = "%04d/%02d/%02d %02d:%02d:%02d"%(now.tm_year, \
+                        now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec)
+        cv2.putText(frame, current_time, (0, h-1), cv2.FONT_HERSHEY_SIMPLEX, \
+                    1.5, (255,255,255), 2, cv2.LINE_AA)
 
         out.write(frame)
 
